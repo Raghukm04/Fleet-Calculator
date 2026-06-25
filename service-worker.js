@@ -1,4 +1,4 @@
-const CACHE_NAME = 'fleet-calculator-v2';
+const CACHE_NAME = 'fleet-calculator-v3';
 const ASSETS = [
   '/',
   '/index.html',
