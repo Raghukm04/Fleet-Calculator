@@ -267,6 +267,14 @@ header p {
         padding-bottom: 2rem;
     }
 
+    .mobile-only-btn {
+        display: block;
+    }
+
+    .input-panel .reset-button {
+        display: none;
+    }
+
     .dashboard {
         grid-template-columns: 1fr;
     }
@@ -300,6 +308,10 @@ header p {
 .dashboard-header p {
     color: var(--text-secondary);
     font-size: 1.1rem;
+}
+
+.mobile-only-btn {
+    display: none;
 }
 
 .glass-button {

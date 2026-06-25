@@ -181,11 +181,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Reset functionality
     const resetBtn = document.getElementById('reset-btn');
+    const mobileResetBtn = document.getElementById('mobile-reset-btn');
+    
+    const resetCalculator = () => {
+        Object.values(inputs).forEach(input => input.value = '');
+        calculateMetrics(); // Will reset outputs back to '--'
+    };
+
     if (resetBtn) {
-        resetBtn.addEventListener('click', () => {
-            Object.values(inputs).forEach(input => input.value = '');
-            calculateMetrics(); // Will reset outputs back to '--'
-        });
+        resetBtn.addEventListener('click', resetCalculator);
+    }
+    
+    if (mobileResetBtn) {
+        mobileResetBtn.addEventListener('click', resetCalculator);
     }
 
     // Toggle Visuals Panel
