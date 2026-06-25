@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fleet Performance Calculator</title>
+    
+    <!-- PWA Setup -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0b0f19">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/1048/1048313.png">
+    
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="background-blobs">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div class="app-layout">
+        <aside class="sidebar glass-panel">
+            <div class="sidebar-header">
+                <h2>Fleet App</h2>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="active" data-target="eph-neph-section">
+                        <span class="icon">📊</span>
+                        <span class="text">EPH & NEPH</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <div class="main-content">
+            <div id="eph-neph-section" class="content-section active">
+                <div class="container">
+                    <header class="dashboard-header">
+                        <div class="header-titles">
+                            <h1>Fleet Calculator</h1>
+                            <p>Analyze your EPH, NEPH, OPH, and more in real-time.</p>
+                        </div>
+                        <button id="toggle-visuals-btn" class="glass-button">
+                            <span class="icon">📈</span> Visual Data
+                        </button>
+                    </header>
+
+        <main class="dashboard">
+            <section class="input-panel glass-panel">
+                <h2>Enter Your Data</h2>
+                
+                <div class="input-group">
+                    <label for="total-earnings">Total Earnings (₹)</label>
+                    <input type="number" id="total-earnings" placeholder="e.g. 1500" step="any" min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="login-hours">Login Hours</label>
+                    <input type="number" id="login-hours" placeholder="e.g. 8" step="any" min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="orders">Total Orders (Optional)</label>
+                    <input type="number" id="orders" placeholder="e.g. 20" step="any" min="0">
+                </div>
+
+                <div class="input-group">
+                    <label for="delivery-distance">Avg Delivery Distance (DD) (Optional)</label>
+                    <input type="number" id="delivery-distance" placeholder="e.g. 4.5 km" step="any" min="0">
+                </div>
+
+                <button id="reset-btn" class="reset-button">Refresh Calculator</button>
+            </section>
+
+            <section class="results-panel">
+                <!-- Earning Per Hour -->
+                <div class="result-card glass-panel" id="card-eph">
+                    <div class="result-title">EPH</div>
+                    <div class="result-subtitle">Earning Per Hour</div>
+                    <div class="result-value" id="val-eph">--</div>
+                </div>
+
+                <!-- Order Per Hour -->
+                <div class="result-card glass-panel" id="card-oph">
+                    <div class="result-title">OPH</div>
+                    <div class="result-subtitle">Orders Per Hour</div>
+                    <div class="result-value" id="val-oph">--</div>
+                </div>
+
+                <!-- Cost Per Order -->
+                <div class="result-card glass-panel" id="card-cpo">
+                    <div class="result-title">CPO</div>
+                    <div class="result-subtitle">Cost Per Order</div>
+                    <div class="result-value" id="val-cpo">--</div>
+                </div>
+
+                <!-- Fuel Cost -->
+                <div class="result-card glass-panel" id="card-fuel">
+                    <div class="result-title">Fuel Cost</div>
+                    <div class="result-subtitle">Per Hour Fuel Cost</div>
+                    <div class="result-value" id="val-fuel">--</div>
+                </div>
+
+                <!-- Net Earning Per Hour -->
+                <div class="result-card glass-panel highlight-card" id="card-neph">
+                    <div class="result-title">NEPH</div>
+                    <div class="result-subtitle">Net Earning Per Hour</div>
+                    <div class="result-value" id="val-neph">--</div>
+                </div>
+
+                <!-- Base Cost Per Order -->
+                <div class="result-card glass-panel highlight-card" id="card-base-cpo">
+                    <div class="result-title">Base CPO</div>
+                    <div class="result-subtitle">Base Cost Per Order</div>
+                    <div class="result-value" id="val-base-cpo">--</div>
+                </div>
+            </section>
+
+            <!-- Visuals Panel (Hidden by default) -->
+            <section id="visuals-panel" class="visuals-panel glass-panel" style="display: none; margin-top: 2rem;">
+                <h2 style="margin-bottom: 1.5rem; color: #fff;">Visual Analysis</h2>
+                <div class="charts-container">
+                    <div class="chart-wrapper">
+                        <canvas id="earningsChart"></canvas>
+                    </div>
+                    <div class="chart-wrapper">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
