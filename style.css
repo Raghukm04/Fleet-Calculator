@@ -156,6 +156,21 @@ body {
 header {
     text-align: center;
     margin-bottom: 3rem;
+    position: relative;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    color: var(--text-primary);
+    cursor: pointer;
+    padding: 0.5rem;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
 }
 
 header h1 {
@@ -190,63 +205,66 @@ header p {
 }
 
 @media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
     .app-layout {
         flex-direction: column;
     }
 
     .sidebar {
-        width: 100%;
-        height: auto;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding: 0.5rem 1rem;
         position: fixed;
-        bottom: 0;
+        top: 0;
+        left: -100%;
+        width: 250px;
+        height: 100vh;
+        z-index: 1000;
+        transition: left 0.3s ease;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: rgba(11, 15, 25, 0.98);
+        border-right: 1px solid var(--glass-border);
+        border-top: none;
+        border-bottom: none;
+        padding: 2rem;
+        padding-top: 5rem;
+    }
+
+    .sidebar.open {
         left: 0;
-        z-index: 100;
-        background: rgba(11, 15, 25, 0.95);
-        border-top: 1px solid var(--glass-border);
-        backdrop-filter: blur(12px);
     }
 
     .sidebar-header {
-        display: none; /* Hide logo on mobile bottom nav */
-    }
-
-    .sidebar-nav {
-        width: 100%;
+        display: block;
+        margin-bottom: 2rem;
     }
 
     .sidebar-nav ul {
         display: flex;
-        justify-content: space-around;
-        margin: 0;
-        padding: 0;
+        flex-direction: column;
     }
 
     .sidebar-nav li {
-        margin: 0;
-        padding: 0.5rem;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        border-radius: 8px;
+        flex-direction: row;
+        justify-content: flex-start;
+        padding: 1rem;
+        margin-bottom: 0.5rem;
     }
 
     .sidebar-nav li .icon {
-        margin-right: 0;
-        margin-bottom: 0.3rem;
+        margin-right: 1rem;
+        margin-bottom: 0;
         font-size: 1.4rem;
     }
 
     .sidebar-nav li .text {
-        font-size: 0.75rem;
+        font-size: 1rem;
     }
 
     .main-content {
         padding: 1rem;
-        padding-bottom: 90px; /* Space for bottom nav */
+        padding-bottom: 2rem;
     }
 
     .dashboard {
